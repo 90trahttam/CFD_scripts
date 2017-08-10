@@ -97,11 +97,11 @@ class FLACS_geom:
 ######################################################################################################
 
         
-    def filter_duplicates(self):
-        """This method filters duplicate boxes"""    
-        seen = set()
-        seen_add = seen.add
-        return list([a,b] for a,b in zip(self.sort_info3(), self.sort_info4()) if not b in seen or seen_add(b))
+#    def filter_duplicates(self):
+#        """This method filters duplicate boxes"""    
+#        seen = set()
+#        seen_add = seen.add
+#        return list([a,b] for a,b in zip(self.sort_info3(), self.sort_info4()) if not b in seen or seen_add(b))
         
 ######################################################################################################
 
