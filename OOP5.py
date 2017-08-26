@@ -16,21 +16,21 @@ class FLACS_geom:
 
 ################### islice(iterater, yield choice, stop, number of yields) #### i think.... #########
 
-    def sort_info1(self):
+    def sort_boxes(self):
         """This gets box coordinates"""
-        return list(islice(self.search('BOX'), 0, None, 3))
-    def sort_info2(self):                                           
-        """This gets box dimensions"""
-        return list(islice(self.search('BOX'), 1, None, 3))
-    def sort_info3(self):                                           
+        return zip(list(islice(self.search('BOX'), 0, None, 3)), list(islice(self.search('BOX'), 1, None, 3)))
+#    def sort_info2(self):                                           
+#        """This gets box dimensions"""
+#        return list(islice(self.search('BOX'), 1, None, 3))
+    def sort_clys(self):                                           
         """This gets cylinder coordinates"""
-        return list(islice(self.search('CYLINDER'), 0, None, 3))
-    def sort_info4(self):                                           
-        """This gets cylinder dimensions"""
-        return list(islice(self.search('CYLINDER'), 1, None, 3))        
-    def sort_info5(self):                                           
-        """This gets cylinder direction"""
-        return list(islice(self.search('CYLINDER'), 2, None, 3))        
+        return zip(list(islice(self.search('CYLINDER'), 0, None, 3)), list(islice(self.search('CYLINDER'), 1, None, 3)), list(islice(self.search('CYLINDER'), 2, None, 3)))
+#    def sort_info4(self):                                           
+#        """This gets cylinder dimensions"""
+#        return list(islice(self.search('CYLINDER'), 1, None, 3))        
+#    def sort_info5(self):                                           
+#        """This gets cylinder direction"""
+#        return list(islice(self.search('CYLINDER'), 2, None, 3))        
 
     def unit_conversion1(self):
         return np.around((np.array(np.loadtxt(self.sort_info1())) / 1000),decimals = 1).tolist() 
@@ -110,11 +110,11 @@ class FLACS_geom:
 # c = FLACS_geom(open("combined.mcr")).sort_to3(2,4)
 # d = FLACS_geom(open("combined.mcr")).sort_to3(0,2)
 # e = FLACS_geom(open("combined.mcr")).sort_to6()
-f = FLACS_geom(open("combined.mcr")).filter_duplicates()
-g = FLACS_geom(open("combined.mcr")).sort_info1()
-h = FLACS_geom(open("combined.mcr")).sort_info3()
-print(len(g),len(h)) 
+# f = FLACS_geom(open("combined.mcr")).filter_duplicates()
+# g = FLACS_geom(open("combined.mcr")).sort_info1()
+# h = FLACS_geom(open("combined.mcr")).sort_info3()
+# print(len(g),len(h)) 
 
-
+a = FLACS_geom(open("test.mcr")).sort_boxes()
 
 
